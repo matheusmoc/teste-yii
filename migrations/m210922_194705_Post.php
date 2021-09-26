@@ -13,12 +13,10 @@ class m210922_194705_Post extends Migration
     public function safeUp()
     {
         $this->createTable('POST', [
-            'ID'=>$this->primaryKey(),
-            'TITLE' =>$this->string(),
-            'CONTENT'=>$this->string(),
-            'IMAGE'=>$this->string(),
+            'id' => $this->primaryKey(),
+            'title' => $this->string()->notNull(),
+            'content' => $this->text(),
         ]);
-        $this->addForeignKey('post_fk', 'USUARIO', 'POST_ID', 'POST', 'RESTRICT' /*CASCADE*/ /*SET NULL*/ /*SET VALUR - 1*/,   );
     }
 
     /**
@@ -26,7 +24,6 @@ class m210922_194705_Post extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('post_fk', 'POST');
         $this->dropTable('POST');
     }
 

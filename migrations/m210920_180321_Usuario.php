@@ -17,9 +17,9 @@ class m210920_180321_Usuario extends Migration
             'LOGIN' =>$this->string(),
             'SENHA'=>$this->string(),
             'NAME'=>$this->string()->notNull(),
-            'NUCLEO_ID'=>$this->integer(),
+            'NUCLEO_ID'=>$this->integer()
         ]);
-        $this->addForeignKey('nucleo_fk', 'USUARIO', 'NUCLEO_ID', 'NUCLEO', 'RESTRICT' /*CASCADE*/ /*SET NULL*/ /*SET VALUR - 1*/,   );
+        $this->addForeignKey('nucleo_fk', 'USUARIO', 'NUCLEO_ID', 'NUCLEO', 'ID', 'RESTRICT' /*CASCADE*/ /*SET NULL*/ /*SET VALUR - 1*/,   );
     }
 
     /**

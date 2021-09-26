@@ -13,7 +13,7 @@ class m210920_171349_Nucleo extends Migration
     public function safeUp()
     {
         $this->createTable('NUCLEO', [
-            'ID'=>$this->primaryKey(),
+            'ID'=>$this->primaryKey(), //toda chave primaria é autoincremento
             'NAME'=>$this->string(),
 
         ]);
