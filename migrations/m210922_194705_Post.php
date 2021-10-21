@@ -13,16 +13,11 @@ class m210922_194705_Post extends Migration
     public function safeUp()
     {
         $this->createTable('POST', [
-            'id' => $this->primaryKey(),
+            'ID' => $this->primaryKey(),
+            'POST' => $this->string(),
             'title' => $this->string()->notNull(),
             'content' => $this->text(),
         ]);
-
-        $this->insert('POST', [
-            'title' => 'title 1',
-            'content' => 'content 1',
-        ]);
-
     }
 
     /**
@@ -30,7 +25,6 @@ class m210922_194705_Post extends Migration
      */
     public function safeDown()
     {
-        $this->delete('POST', ['id' => 1]);
         $this->dropTable('POST');
     }
 

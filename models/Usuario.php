@@ -14,6 +14,7 @@ use Yii;
  * @property int|null $NUCLEO_ID
  *
  * @property Nucleo $nUCLEO
+ * @property Video[] $videos
  */
 class Usuario extends \yii\db\ActiveRecord
 {
@@ -60,5 +61,15 @@ class Usuario extends \yii\db\ActiveRecord
     public function getNUCLEO()
     {
         return $this->hasOne(Nucleo::className(), ['ID' => 'NUCLEO_ID']);
+    }
+
+    /**
+     * Gets query for [[Videos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVideos()
+    {
+        return $this->hasMany(Video::className(), ['USUARIO_ID' => 'ID']);
     }
 }

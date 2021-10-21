@@ -7,9 +7,13 @@ use Yii;
 /**
  * This is the model class for table "post".
  *
- * @property int $id
+ * @property int $ID
+ * @property string|null $POST
  * @property string $title
  * @property string|null $content
+ *
+ * @property Agenda[] $agendas
+ * @property Video[] $videos
  */
 class Post extends \yii\db\ActiveRecord
 {
@@ -29,7 +33,7 @@ class Post extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['content'], 'string'],
-            [['title'], 'string', 'max' => 255],
+            [['POST', 'title'], 'string', 'max' => 255],
         ];
     }
 
@@ -39,9 +43,30 @@ class Post extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'ID' => 'ID',
+            'POST' => 'Post',
             'title' => 'Title',
             'content' => 'Content',
         ];
+    }
+
+    /**
+     * Gets query for [[Agendas]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAgendas()
+    {
+        return $this->hasMany(Agenda::className(), ['POST_ID' => 'ID']);
+    }
+
+    /**
+     * Gets query for [[Videos]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVideos()
+    {
+        return $this->hasMany(Video::className(), ['POST_ID' => 'ID']);
     }
 }

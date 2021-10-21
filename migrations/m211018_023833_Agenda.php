@@ -17,8 +17,11 @@ class m211018_023833_Agenda extends Migration
             'title' => $this->string()->notNull(),
             'data_inicio' => $this->text()->notNull(),
             'imagem_evento' =>$this->string()->notNull(),
+            'created_at' => $this->datetime()->notNull(),
+            'updated_at' => $this->datetime(),
+            'POST_ID' => $this->integer(),
             ]);
-            $this->addForeignKey('post_foreing_key', 'AGENDA', 'POST_ID', 'POST', 'ID', 'RESTRICT' /*CASCADE*/ /*SET NULL*/ /*SET VALUE - 1*/,   );
+            $this->addForeignKey('post_c2_fk', 'AGENDA', 'POST_ID', 'POST', 'ID', 'RESTRICT' /*CASCADE*/ /*SET NULL*/ /*SET VALUE - 1*/,   );
     }
 
     /**
@@ -26,7 +29,7 @@ class m211018_023833_Agenda extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('post_foreing_key', 'AGENDA');
+        $this->dropForeignKey('post_c2_fK', 'AGENDA');
         $this->dropTable('AGENDA');
 
         return false;

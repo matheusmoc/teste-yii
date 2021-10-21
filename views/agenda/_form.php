@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'data_inicio')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'imagem_evento')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'imagem_evento')->fileInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -13,12 +13,17 @@ class m211003_204551_Video extends Migration
     public function safeUp()
     {
         $this->createTable('VIDEO',[
-        'id' => $this->primaryKey(),
+        'ID' => $this->primaryKey(),
         'title' => $this->string()->notNull(),
         'content' => $this->string()->notNull(),
         'description'=> $this->text(),
+        'POST_ID' => $this->integer(),
+        'USUARIO_ID' => $this->integer(),
+
+
         ]);
-        $this->addForeignKey('post_foreingkey', 'VIDEO', 'POST_ID', 'POST', 'ID', 'RESTRICT' /*CASCADE*/ /*SET NULL*/ /*SET VALUE - 1*/,   );
+        $this->addForeignKey('post_c1_fk', 'VIDEO', 'POST_ID', 'POST', 'ID', 'RESTRICT', 'RESTRICT' /*CASCADE*/ /*SET NULL*/ /*SET VALUE - 1*/   );
+        $this->addForeignKey('user_c1_fk', 'VIDEO', 'USUARIO_ID', 'USUARIO', 'ID', 'RESTRICT',  'RESTRICT' /*CASCADE*/ /*SET NULL*/ /*SET VALUE - 1*/   );
     }
 
     /**
@@ -26,7 +31,8 @@ class m211003_204551_Video extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('post_foreingkey', 'VIDEOPOST');
+        $this->dropForeignKey('user_c1_fK', 'VIDEO');
+        $this->dropForeignKey('post_c1_fK', 'VIDEO');
         $this->dropTable('VIDEO');
     }
 

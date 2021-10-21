@@ -11,6 +11,11 @@ use Yii;
  * @property string $title
  * @property string $data_inicio
  * @property string $imagem_evento
+ * @property string $created_at
+ * @property string|null $updated_at
+ * @property int|null $POST_ID
+ *
+ * @property Post $pOST
  */
 class Agenda extends \yii\db\ActiveRecord
 {
@@ -28,9 +33,12 @@ class Agenda extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'data_inicio', 'imagem_evento'], 'required'],
+            [['title', 'data_inicio', 'imagem_evento', 'created_at'], 'required'],
             [['data_inicio'], 'string'],
+            [['created_at', 'updated_at'], 'safe'],
+            [['POST_ID'], 'integer'],
             [['title', 'imagem_evento'], 'string', 'max' => 255],
+            [['POST_ID'], 'exist', 'skipOnError' => true, 'targetClass' => Post::className(), 'targetAttribute' => ['POST_ID' => 'ID']],
         ];
     }
 
@@ -44,6 +52,19 @@ class Agenda extends \yii\db\ActiveRecord
             'title' => 'Title',
             'data_inicio' => 'Data Inicio',
             'imagem_evento' => 'Imagem Evento',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'POST_ID' => 'Post  ID',
         ];
+    }
+
+    /**
+     * Gets query for [[POST]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPOST()
+    {
+        return $this->hasOne(Post::className(), ['ID' => 'POST_ID']);
     }
 }
