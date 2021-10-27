@@ -1,12 +1,17 @@
 <?php
 
 namespace app\controllers;
-
+use yii;
 use app\models\Post;
 use app\models\PostSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
+//Access Control Filter
+use yii\filters\AccessControl;
+use yii\web\ForbiddenHttpException;
+
 
 /**
  * PostController implements the CRUD actions for Post model.
@@ -27,6 +32,34 @@ class PostController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
+
+
+                'access' => [
+                    'class' => AccessControl::className(),
+                    'only' => ['create', 'delete', 'view', 'update'],
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'actions' => ['view'],
+                            'roles' => ['?'],  //visitante
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['create', 'delete'],
+                            'roles' => ['@'], //usuario logado
+                        ],
+                    ],
+
+                    'denyCallback' => function ($rule, $action) {
+                        if (Yii::$app->user->isGuest) {
+                            Yii::$app->user->loginRequired();
+                        } else {
+                            throw new ForbiddenHttpException('Somente administradores podem entrar nessa página.');
+                        }
+                    }
+
+                ],
+
             ]
         );
     }
