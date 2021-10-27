@@ -17,8 +17,8 @@ class AgendaSearch extends Agenda
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['title', 'data_inicio', 'imagem_evento'], 'safe'],
+            [['id', 'POST_ID'], 'integer'],
+            [['title', 'data_inicio', 'imagem_evento', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -59,6 +59,9 @@ class AgendaSearch extends Agenda
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'POST_ID' => $this->POST_ID,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

@@ -33,6 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'data_inicio:ntext',
             'imagem_evento',
+            'created_at',
+            'updated_at',
+            'POST_ID',
         ],
     ]) ?>
 

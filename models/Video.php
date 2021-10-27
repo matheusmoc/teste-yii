@@ -33,7 +33,7 @@ class Video extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content'], 'required'],
+            [['title', 'content'], 'required', 'message' => '*Campo vazio'],
             [['description'], 'string'],
             [['POST_ID', 'USUARIO_ID'], 'integer'],
             [['title', 'content'], 'string', 'max' => 255],
@@ -49,11 +49,11 @@ class Video extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'title' => 'Title',
-            'content' => 'Content',
-            'description' => 'Description',
-            'POST_ID' => 'Post  ID',
-            'USUARIO_ID' => 'Usuario  ID',
+            'title' => 'Título',
+            'content' => 'Conteúdo',
+            'description' => 'Descrição',
+            'POST_ID' => 'Códido da postagem',
+            'USUARIO_ID' => 'Código do usuário',
         ];
     }
 

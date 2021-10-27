@@ -48,13 +48,13 @@ class Agenda extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'data_inicio' => 'Data Inicio',
-            'imagem_evento' => 'Imagem Evento',
+            'id' => 'Código de Agenda',
+            'title' => 'Título',
+            'data_inicio' => 'Data de Inicio',
+            'imagem_evento' => 'Imagem do Evento',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'POST_ID' => 'Post  ID',
+            'POST_ID' => 'Código de postagem',
         ];
     }
 

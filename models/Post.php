@@ -31,7 +31,7 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'content'], 'required', 'message' => '*Campo em branco'],
             [['content'], 'string'],
             [['POST', 'title'], 'string', 'max' => 255],
         ];
@@ -43,10 +43,10 @@ class Post extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'POST' => 'Post',
-            'title' => 'Title',
-            'content' => 'Content',
+            'ID' => 'Código do evento',
+            'POST' => 'Eventos',
+            'title' => 'Título',
+            'content' => 'Conteúdo',
         ];
     }
 
