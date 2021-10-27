@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Agenda', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar agenda', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -24,15 +24,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'title',
             'data_inicio:ntext',
             'imagem_evento',
-            'created_at',
+            //'created_at',
             //'updated_at',
-            //'POST_ID',
+            'POST_ID',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

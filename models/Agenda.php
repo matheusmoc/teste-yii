@@ -33,7 +33,7 @@ class Agenda extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'data_inicio', 'imagem_evento', 'created_at'], 'required'],
+        [['title', 'data_inicio', /*'imagem_evento'*/ /*'created_at'*/], 'required'],
             [['data_inicio'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['POST_ID'], 'integer'],

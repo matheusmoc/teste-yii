@@ -52,10 +52,10 @@ class PostController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($ID)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($ID),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class PostController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'ID' => $model->ID]);
+                return $this->redirect(['view', 'id' => $model->ID]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class PostController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($ID)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($ID);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'ID' => $model->ID]);
+            return $this->redirect(['view', 'id' => $model->ID]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class PostController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($ID)
+    public function actionDelete($id)
     {
-        $this->findModel($ID)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class PostController extends Controller
      * @return Post the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID)
+    protected function findModel($id)
     {
         if (($model = Post::findOne($id)) !== null) {
             return $model;

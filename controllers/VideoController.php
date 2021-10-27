@@ -52,10 +52,10 @@ class VideoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($ID)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($ID),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -88,9 +88,9 @@ class VideoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($ID)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($ID);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'ID' => $model->ID]);
@@ -108,9 +108,9 @@ class VideoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($ID)
+    public function actionDelete($id)
     {
-        $this->findModel($ID)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class VideoController extends Controller
      * @return Video the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($ID)
+    protected function findModel($id)
     {
         if (($model = Video::findOne($id)) !== null) {
             return $model;

@@ -44,7 +44,7 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'Código do evento',
-            'POST' => 'Eventos',
+            'POST' => 'Evento',
             'title' => 'Título',
             'content' => 'Conteúdo',
         ];

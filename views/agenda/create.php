@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Agenda */
 
-$this->title = 'Create Agenda';
+$this->title = 'Criar Agenda';
 $this->params['breadcrumbs'][] = ['label' => 'Agendas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
