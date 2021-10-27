@@ -121,7 +121,18 @@ use Yii;
 
    public function validatePassword($password)
    {
-       return $this->SENHA === $password;
+     return Yii::$app->getSecurity()->validatePassword($password, $this->SENHA);
    }
+
+   public function beforeSave($insert)   //HASHING DE SENHA
+    {
+       if (parent::beforeSave($insert)) {
+           $this->SENHA = Yii::$app->security->generatePasswordHash($this->SENHA);
+           return true;
+       } else {
+           return false;
+       }
+    }
+
 
 }
