@@ -65,6 +65,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                             [
                                 "items" => [
                                     ['label' => 'Home', 'url' => ['/site/index']],
+                                    ['label' => 'Usuário', 'url' => ['/usuario/index']],
                                     ["label" => "Postagens de Eventos", "url" => ["/post/index"]], //"icon" => "files-o"],
                                     ['label' => 'Videos de Apresentação', 'url' => ['/video/index']],
                                     ['label' => 'Calendário', 'url' => ['/agenda/index']],
